@@ -16,7 +16,7 @@ public class ArcoTest {
 	
 	@Test
 	public void arcoTest() {
-		assertTrue(arco.getTipoDeArco().equals("Nodo de Paso --> Nodo de Paso"));
+		assertTrue(arco.getTipoDeArco().equals("Nodo de Paso --> Consumidor"));
 		assertTrue(arco.getNodoA() == 5);
 		assertTrue(arco.getNodoB() == 4);
 		assertTrue(arco.getPeso() == 18);

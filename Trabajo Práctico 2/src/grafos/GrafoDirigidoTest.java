@@ -2,6 +2,8 @@ package grafos;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,16 +18,21 @@ public class GrafoDirigidoTest {
 		this.grafoD2 = new GrafoDirigido(15);
 		
 		
-		this.grafoD.agregarArista(5, 4, 15);
-		this.grafoD.agregarArista(3, 9, 64);
-		this.grafoD.agregarArista(9, 0, 1);
+		this.grafoD.agregarArista(0, 1, 15);
+		this.grafoD.agregarArista(0, 2, 64);
+		this.grafoD.agregarArista(0, 3, 1);
+		this.grafoD.agregarArista(1, 5, 5);
+		this.grafoD.agregarArista(1, 4, 5);
+		this.grafoD.agregarArista(4, 5, 5);
+		this.grafoD.agregarArista(5, 6, 5);
+		
 		
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void VerticeAIndexOutOfBoundsExceptionTest() {
 		
-		this.grafoD2.agregarArista(20, 12, 15);
+		this.grafoD2.agregarArista(12, 20, 15);
 		
 	}
 	
@@ -43,7 +50,7 @@ public class GrafoDirigidoTest {
 	
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void verticeBnegativo() {
-		this.grafoD2.agregarArista(6, -10, 15);
+		this.grafoD2.agregarArista(-6, 10, 15);
 	}
 	
 	@Test (expected = RuntimeException.class)
@@ -58,11 +65,30 @@ public class GrafoDirigidoTest {
 	
 	@Test
 	public void aristaCorrecta() {
-		assertTrue(this.grafoD.obtenerArista(9, 0) == 1);
+		assertTrue(this.grafoD.obtenerArista(9, 0) == 0);
 	}
 	
 	@Test
 	public void noSimetriaTest() {
 		assertTrue(this.grafoD.obtenerArista(0, 9) == 0);
+	}
+	
+	@Test
+	public void cantidadDeVerticesTest() {
+		assertTrue(this.grafoD.cantidadDeVertices() == 10);
+	}
+	
+	@Test
+	public void vecinosTest() {
+		
+		ArrayList<Integer> vecinos = this.grafoD.vecinos(0);
+		ArrayList<Integer> vecinosReales = new ArrayList<Integer>();
+		
+		vecinosReales.add(1);
+		vecinosReales.add(2);
+		vecinosReales.add(3);
+		
+		assertTrue(vecinos.equals(vecinosReales));
+		
 	}
 }
