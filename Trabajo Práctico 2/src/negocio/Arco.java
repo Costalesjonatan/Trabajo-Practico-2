@@ -23,9 +23,9 @@ public class Arco {
 			return "Productor --> NodoDePaso";
 		}
 		else if(tipoDeArco == 1) {
-			return "Nodo de Paso --> Consumidor";
+			return "Nodo de Paso --> Nodo de Paso";
 		}
-		return "Nodo de Paso --> Nodo de Paso";
+		return "Nodo de Paso --> Consumidor";
 	}
 	
 	int getNodoA() {

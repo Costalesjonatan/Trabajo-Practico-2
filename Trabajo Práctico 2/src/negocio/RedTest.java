@@ -66,7 +66,7 @@ private Red red;
 	@Test
 	public void agregarNodoDePasoTest() {
 		
-		assertTrue(this.red.getNodosDePaso().get(3) == 4);
+		assertTrue(this.red.getNodosDePaso().get(4) == 4);
 		assertTrue(this.red.getNodosDePaso().size() == 6);
 		
 	}
