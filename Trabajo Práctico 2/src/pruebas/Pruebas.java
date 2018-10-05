@@ -1,6 +1,6 @@
 package pruebas;
 
-import grafos.GrafoDirigido;
+import grafos.DiGrafoConPesos;
 import negocio.Red;
 
 public class Pruebas {
@@ -22,7 +22,7 @@ public class Pruebas {
 		red.agregarArco(2, 1, 1, 5);
 		
 		
-		GrafoDirigido grafo = red.construirGrafo();
+		DiGrafoConPesos grafo = red.construirGrafo();
 		
 		System.out.println(grafo.toString());
 	}

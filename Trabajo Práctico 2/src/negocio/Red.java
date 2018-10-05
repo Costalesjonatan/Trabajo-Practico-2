@@ -2,14 +2,14 @@ package negocio;
 
 import java.util.ArrayList;
 
-import grafos.GrafoDirigido;
+import grafos.DiGrafoConPesos;
 
 
 public class Red {
 	
 	private ArrayList<ArrayList<Integer>> red;
 	private ArrayList<Arco> arcos;
-	private GrafoDirigido grafoDeRed;
+	private DiGrafoConPesos grafoDeRed;
 	private int contadorNodosProductores;
 	private int contadorNodosConsumidores;
 	private int contadorNodosDePaso;
@@ -97,10 +97,10 @@ public class Red {
 	
 	//public void capacidadMaxima()
 	
-	public GrafoDirigido construirGrafo() {
+	public DiGrafoConPesos construirGrafo() {
 		
 		int verticesGrafo = this.contadorNodosProductores + this.contadorNodosConsumidores + this.contadorNodosDePaso;
-		this.grafoDeRed = new GrafoDirigido(verticesGrafo+2);
+		this.grafoDeRed = new DiGrafoConPesos(verticesGrafo+2);
 		
 		for(int i = 0; i < this.arcos.size(); i++) {
 			Arco arco = this.arcos.get(i);

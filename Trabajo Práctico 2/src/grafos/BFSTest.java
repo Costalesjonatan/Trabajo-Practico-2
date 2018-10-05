@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class BFSTest {
 
-	private GrafoDirigido diGrafo;
+	private DiGrafoConPesos diGrafo;
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void grafoNullTest() {
@@ -19,7 +19,7 @@ public class BFSTest {
 	@Test
 	public void alcanzablesTest() {
 		
-		diGrafo = new GrafoDirigido(5);
+		diGrafo = new DiGrafoConPesos(5);
 		diGrafo.agregarArista(0, 1, 5);
 		diGrafo.agregarArista(0, 2, 5);
 		diGrafo.agregarArista(1, 2, 5);
@@ -49,7 +49,7 @@ public class BFSTest {
 	
 	@Test
 	public void esConexoGrafoVacio() {
-		this.diGrafo = new GrafoDirigido(0);
+		this.diGrafo = new DiGrafoConPesos(0);
 		
 		assertTrue(BFS.esConexo(diGrafo));
 	}
@@ -57,7 +57,7 @@ public class BFSTest {
 	@Test
 	public void esConexoTest() {
 		
-		diGrafo = new GrafoDirigido(5);
+		diGrafo = new DiGrafoConPesos(5);
 		diGrafo.agregarArista(0, 1, 5);
 		diGrafo.agregarArista(0, 2, 5);
 		diGrafo.agregarArista(1, 2, 5);
@@ -67,5 +67,16 @@ public class BFSTest {
 		
 		assertTrue(BFS.esConexo(diGrafo));
 		
+	}
+	
+	@Test
+	public void noEsConexoTest() {
+		
+		diGrafo = new DiGrafoConPesos(5);
+		diGrafo.agregarArista(0, 1, 5);
+		diGrafo.agregarArista(1, 2, 6);
+		diGrafo.agregarArista(3, 4, 78);
+		
+		assertFalse(BFS.esConexo(diGrafo));
 	}
 }

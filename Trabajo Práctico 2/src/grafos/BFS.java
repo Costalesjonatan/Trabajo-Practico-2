@@ -10,47 +10,48 @@ public class BFS {
 	private static boolean [] marcados;
 	
 	// Determina si un grafo es conexo
-	public static boolean esConexo(GrafoDirigido grafo)
+	public static boolean esConexo(DiGrafoConPesos diGrafo)
 	{
-		if( grafo == null )
-			throw new IllegalArgumentException("Se consult la conexin de un grafo null!");
+		if( diGrafo == null )
+			throw new IllegalArgumentException("Se consulto si es conecxo un grafo null!");
 		
-		if( grafo.cantidadDeVertices() == 0 )
+		if( diGrafo.cantidadDeVertices() == 0 )
 			return true;
 		
-		return alcanzables(grafo, 0).size() == grafo.cantidadDeVertices();
+		return alcanzables(diGrafo, 0).size() == diGrafo.cantidadDeVertices();
 	}
 	
 	// Encuentra los vrtices alcanzables desde el vrtice dado
-	static Set<Integer> alcanzables(GrafoDirigido grafo, int origen)
+	static Set<Integer> alcanzables(DiGrafoConPesos diGrafo, int origen)
 	{
-		inicializar(grafo, origen);
+		inicializar(diGrafo, origen);
 		
 		while ( L.size()>0 )
 		{	
+			
 			int i = L.get(0);
 			marcados[i] = true;
 			
-			agregarVecinosPendientes(grafo, i);
-			L.remove(0);		
+			agregarVecinosPendientes(diGrafo, i);
+			L.remove(0);	
 		}
 		
 		return marcados();
 	}
 
-	private static void inicializar(GrafoDirigido grafo, int origen) 
+	private static void inicializar(DiGrafoConPesos diGrafo, int origen) 
 	{
 		//Los vrtices pendientes de visitar
 		L = new ArrayList<Integer>();
 		L.add(origen);
 		
 		//Los vrtices visitados
-		marcados = new boolean[grafo.cantidadDeVertices()];	
+		marcados = new boolean[diGrafo.cantidadDeVertices()];
 	}
 
-	private static void agregarVecinosPendientes(GrafoDirigido grafo, int i) 
+	private static void agregarVecinosPendientes(DiGrafoConPesos diGrafo, int i) 
 	{
-		for (Integer v: grafo.vecinos(i))
+		for (Integer v: diGrafo.vecinos(i))
 			if ( marcados[v] == false && L.contains(v) == false )
 				L.add(v);
 	}
@@ -65,7 +66,4 @@ public class BFS {
 		
 		return ret;
 	}
-
-
-	
 }
